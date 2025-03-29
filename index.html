@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Terminal</title>
+    <style>
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            background-color: #000;
+            color: #0f0;
+            padding: 20px;
+            animation: flicker 1.5s infinite alternate;
+        }
+        .profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0f0;
+            box-shadow: 0 0 20px #0f0;
+        }
+        .menu {
+            margin-top: 20px;
+        }
+        .menu button {
+            display: block;
+            width: 250px;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #0f0;
+            background-color: #111;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-shadow: 0 0 10px #0f0;
+            box-shadow: 0 0 15px #0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu button:hover {
+            background-color: #0f0;
+            color: #000;
+            text-shadow: none;
+            box-shadow: 0 0 30px #0f0;
+        }
+        .menu button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+        .menu button:hover::before {
+            left: 100%;
+        }
+        h2 {
+            text-shadow: 0 0 20px #0f0;
+            font-size: 26px;
+            animation: flicker 2s infinite alternate;
+        }
+        .glitch {
+            font-size: 18px;
+            text-shadow: 3px 3px #00ff00, -3px -3px #ff00ff;
+            animation: flicker 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://files.catbox.moe/21geso.jpg" alt="Profile Picture" class="profile">
+    <h2>☠ Welcome to the Dark Side ☠</h2>
+    <p class="glitch">[ Access Granted... Loading Exploits... ]</p>
+    <div class="menu">
+        <button onclick="sendMessage('menu bug')">☠ Bug Menu ☠</button>
+        <button onclick="sendMessage('menu hack')">☠ Vrs Hack Menu ☠</button>
+    </div><script>
+    function sendMessage(message) {
+        var phoneNumber = '+6283187774255';
+        var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappUrl;
+    }
+</script>
+
+</body>
+</html>
